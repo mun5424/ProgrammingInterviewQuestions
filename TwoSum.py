@@ -2,7 +2,7 @@ from typing import List
 
 def twoSum(nums: List[int], target: int) -> List[int]:
     dict = {}
-    for i in nums: 
+    for i in range(len(nums)): 
         if not target-nums[i] in dict: 
             dict[nums[i]] = i
         else:
