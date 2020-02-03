@@ -9,7 +9,7 @@ class Solution::
         dummy = ListNode(0)
         carry = 0
         current = dummy
-        while (l1 and l2):
+        while (l1 or l2):
             x = l1.val if l1 else 0
             y = l2.val if l2 else 0
             sum = (x + y + carry)
