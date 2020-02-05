@@ -11,4 +11,4 @@ class Solution:
             map[s[j]] = j + 1
             j += 1
         return res
-    
+    # need to review this again
