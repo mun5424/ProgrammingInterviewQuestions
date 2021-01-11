@@ -17,4 +17,4 @@ array = [1,2,3,4,5]  maxCapacity = 5
 array.Add(1)  -> arraylist multiples by 2 
 newArray = [1,2,3,4,5,1, , , , ]
 adding will be O(N) 
-retrieval of element will awlays be O(1)
+retrieval of element will awlays be O(1)ffm
