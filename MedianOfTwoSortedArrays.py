@@ -15,13 +15,18 @@ class Solution:
 
         # index
         low = 0
-        high = len(x)
+        high, m = len(x)
         mid = (len(x) + len(y) + 1)/ 2 # +1 to handle both odd/even 
+        n = len(y)
         while (low <= high):    
             partitionX = (low + high) / 2
             partitionY = mid - partitionX
 
-            maxLeftX = (partitionX == 0) if system.minint else x[partitionX-1] 
+            maxLeftX = system.minint if (partitionX == 0) else x[partitionX-1] 
+            maxLeftY =  system.minint if (partitionY == 0) else y[partitionX]
+
+            minRightX = system.maxint if (partitionX == m) else x[partitionX]
+            minRightY = system.maxint if (partitionY == n) else x[partitionX]
 
 
 
