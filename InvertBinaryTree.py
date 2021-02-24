@@ -25,3 +25,4 @@ def invertBinaryTree(tree):
     tree.right = invertBinaryTree(left) 
 
     return tree
+
