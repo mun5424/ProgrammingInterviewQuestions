@@ -13,19 +13,17 @@ class TreeNode:
 # The right subtree of a node contains only nodes with keys greater than the node's key.
 # Both the left and right subtrees must also be binary search trees.
 
+
 class Solution:
+    def __init__(self): 
+        self.total = 0
+        
     def convertBST(self, root: TreeNode) -> TreeNode:
         if root == None:
             return None
-        
-        if not root.left and not root.right: 
-            return root
-        if root.right:
-            rightNode = self.convertBST(root.right)
-
-        if root.left: 
-            leftNode = self.convertBST(root.left)
-
-        root.val += leftNode.val + rightNode.val
+        self.convertBST(root.right)
+        self.total += root.val
+        root.val = self.total
+        self.convertBST(root.left)
 
         return root 
