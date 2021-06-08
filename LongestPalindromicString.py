@@ -16,6 +16,8 @@ class Solution:
         end = 0
         for i in range(0, len(s)):
             odds = self.expandFromCenter(s, i, i)
+            # aba
+            # abba
             evens = self.expandFromCenter(s, i, i + 1)
             maxCurrent = max(odds, evens)
             if maxCurrent > end - start:
