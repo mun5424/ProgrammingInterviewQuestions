@@ -30,11 +30,9 @@ def removeislands(matrix):
 
     return matrix
 
-matrix = [[1, 1, 0, 0, 0],
-         [0, 1, 0, 1, 0],
-         [1, 0, 0, 0, 1],
-         [0, 1, 0, 0, 0],
-         [1, 0, 1, 0, 1]]
+matrix = [[1, 1, 1],
+         [0, 1, 0],
+         [1, 0, 0]]
 
 testedmat = removeislands(matrix)
 for i in range(len(testedmat)):
