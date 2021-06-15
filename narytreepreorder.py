@@ -1,11 +1,12 @@
 #Given an interface monarchy, implement its methods
 from typing import Collection
-
+import heapq
 
 class Person:
-    def __init__(self, name):
+    def __init__(self, name, age = 0):
         self.name = name
         self.isAlive = True 
+        self.age = age
         self.children = []
     
 
@@ -13,15 +14,17 @@ class Monarchy:
     def __init__(self):
         self.root = None 
         self.monarchs = {} 
-    
-    def birth(self, child, parent):
+        setattr(Person, "__lt__", lambda self, other: self.age <= other.age)
+
+    def birth(self, child, parent, age = 0):
         person = Person(child) 
         if not parent and not self.root:
             self.root = person 
         else:
             if parent not in self.monarchs:
                 print('parent not found')
-            self.monarchs[parent].children.append(person)
+            
+            heapq.heappush(self.monarchs[parent].children, person)
         
         self.monarchs[child] = person
     
@@ -39,8 +42,8 @@ class Monarchy:
         if node:
             if node.isAlive:
                 lst.append(node.name)
-            for c in node.children:
-                self._preorder(c, lst)         
+            for i in range(len(node.children)-1,-1,-1 ):
+                self._preorder(node.children[i], lst)         
 
     def getOrderOfSuccession(self):
         res = [] 
@@ -50,15 +53,18 @@ class Monarchy:
 
 monarch = Monarchy() 
 monarch.birth('King', None)
-monarch.birth('Andy', 'King')
-monarch.birth('Bob', 'King')
+monarch.birth('Andy', 'King', 16)
+monarch.birth('Bob', 'King', 32)
 monarch.birth('Catherine', 'King')
 monarch.birth('Matthew', 'Andy')
 monarch.birth('Alex', 'Bob')
 monarch.birth('Asha', 'Bob')
 
+print(monarch.monarchs['King'].children[0].name)
+print(monarch.monarchs['King'].children[1].name)
+print(monarch.monarchs['King'].children[2].name)
+
 #monarch.getOrderOfSuccession()
 
-monarch.death('King') 
 
 monarch.getOrderOfSuccession()
